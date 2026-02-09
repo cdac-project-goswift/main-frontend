@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const api = axios.create({
   baseURL: "http://localhost:8080/api",
   headers: {
@@ -7,9 +8,12 @@ const api = axios.create({
   },
 });
 
+
 // Request Interceptor to add JWT token
+
 api.interceptors.request.use(
   (config) => {
+
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -17,20 +21,25 @@ api.interceptors.request.use(
     } else {
       console.warn("No token found in localStorage");
     }
+
     return config;
   },
   (error) => {
     return Promise.reject(error);
   }
+
 );
 
-// Response Interceptor to handle responses and errors
+// Response Interceptor to 
+// handle responses and errors
+
 api.interceptors.response.use(
   (response) => {
     return response; 
   },
   (error) => {
-    // Handle 401 Unauthorized - token expired or invalid
+    // Handle 401 Unauthorized -
+    //  token expired or invalid
     if (error.response && error.response.status === 401) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
@@ -38,6 +47,7 @@ api.interceptors.response.use(
     }
     
     // Handle 403 Forbidden
+
     if (error.response && error.response.status === 403) {
       console.error("403 Forbidden - Token:", localStorage.getItem("token")?.substring(0, 30));
       console.error("403 Forbidden - User:", localStorage.getItem("user"));
@@ -50,6 +60,23 @@ api.interceptors.response.use(
     }
     return Promise.reject(error);
   }
+
 );
 
 export default api;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
