@@ -21,38 +21,38 @@ const Navbar = () => {
     return String(user.role).replace('ROLE_', '');
   };
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>GoSWIFT</Link>
-      </div>
-      <ul className="navbar-nav">
-        {!user ? (
-          <>
-            <li><Link to="/login" className="nav-link">Login</Link></li>
-            <li><Link to="/signup" className="nav-link">Sign Up</Link></li>
-          </>
-        ) : (
-          <>
-            {String(user.role) === 'ROLE_ADMIN' && <li><Link to="/admin/dashboard" className="nav-link">Dashboard</Link></li>}
-            {String(user.role) === 'ROLE_AGENT' && <li><Link to="/agent/dashboard" className="nav-link">Dashboard</Link></li>}
-            {String(user.role) === 'ROLE_CUSTOMER' && (
-              <>
-                <li><Link to="/customer/dashboard" className="nav-link">Dashboard</Link></li>
-                <li><Link to="/customer/my-bookings" className="nav-link">My Bookings</Link></li>
-              </>
-            )}
+//   return (
+//     <nav className="navbar">
+//       <div className="navbar-brand">
+//         <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>GoSWIFT</Link>
+//       </div>
+//       <ul className="navbar-nav">
+//         {!user ? (
+//           <>
+//             <li><Link to="/login" className="nav-link">Login</Link></li>
+//             <li><Link to="/signup" className="nav-link">Sign Up</Link></li>
+//           </>
+//         ) : (
+//           <>
+//             {String(user.role) === 'ROLE_ADMIN' && <li><Link to="/admin/dashboard" className="nav-link">Dashboard</Link></li>}
+//             {String(user.role) === 'ROLE_AGENT' && <li><Link to="/agent/dashboard" className="nav-link">Dashboard</Link></li>}
+//             {String(user.role) === 'ROLE_CUSTOMER' && (
+//               <>
+//                 <li><Link to="/customer/dashboard" className="nav-link">Dashboard</Link></li>
+//                 <li><Link to="/customer/my-bookings" className="nav-link">My Bookings</Link></li>
+//               </>
+//             )}
             
-            <li><Link to="/profile" className="nav-link">Profile</Link></li>
+//             <li><Link to="/profile" className="nav-link">Profile</Link></li>
 
-            <li>
-              <button onClick={handleLogout} className="btn btn-danger" style={{ padding: '5px 10px' }}>Logout</button>
-            </li>
-          </>
-        )}
-      </ul>
-    </nav>
-  );
-};
+//             <li>
+//               <button onClick={handleLogout} className="btn btn-danger" style={{ padding: '5px 10px' }}>Logout</button>
+//             </li>
+//           </>
+//         )}
+//       </ul>
+//     </nav>
+//   );
+ };
 
 export default Navbar;
