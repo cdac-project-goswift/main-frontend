@@ -9,6 +9,8 @@ const AgentDashboard = () => {
   const [recentBookings, setRecentBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
+  
   useEffect(() => {
     const loadAgentData = async () => {
       if (!user?.userId) return;
