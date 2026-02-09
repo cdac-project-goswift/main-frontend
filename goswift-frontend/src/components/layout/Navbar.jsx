@@ -3,7 +3,6 @@ import { useAuth } from "../../providers/AuthProvider";
 
 
 const Navbar = () => {
-
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -11,17 +10,20 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  // ROBUST FIX: Check if user exists and 
+  // role is a string before calling replace
 
-  // ROBUST FIX: Check if user exists and role is a string before calling replace
   const getRoleDisplay = () => {
     if (!user || !user.role) return '';
 
-    // If role is an object (Scenario B), try accessing a property like name or roleName
+    // If role is an object (Scenario B), 
+    // try accessing a property like name or roleName
     if (typeof user.role === 'object') {
         return user.role.roleName?.replace('ROLE_', '') || user.role.name || '';
     }
 
     // If role is a string (Scenario A)
+
     return String(user.role).replace('ROLE_', '');
   };
 
@@ -66,3 +68,13 @@ const Navbar = () => {
     };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
